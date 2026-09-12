@@ -1,29 +1,14 @@
 class Solution:
-    def longestPalindrome(self, s: str) -> str:
-        start = 0
-        end = 0
+    def countCommas(self, n: int) -> int:
+        total = 0
+        start = 1000
+        commas = 1
 
-        def expand(left, right):
-            while left >= 0 and right < len(s) and s[left] == s[right]:
-                left -= 1
-                right += 1
+        while start <= n:
+            end = min(n, start * 1000 - 1)
+            total += (end - start + 1) * commas
 
-            return left + 1, right - 1
+            start *= 1000
+            commas += 1
 
-        for i in range(len(s)):
-
-            # Odd-length palindrome
-            left1, right1 = expand(i, i)
-
-            # Even-length palindrome
-            left2, right2 = expand(i, i + 1)
-
-            if right1 - left1 > end - start:
-                start = left1
-                end = right1
-
-            if right2 - left2 > end - start:
-                start = left2
-                end = right2
-
-        return s[start:end + 1]
+        return total
