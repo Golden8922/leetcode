@@ -10,7 +10,7 @@ https://leetcode.com/problems/count-commas-in-range-ii/
 
 ## Solution
 
-Automatically synchronized from LeetCode on September 9, 2026.
+Automatically synchronized from LeetCode on September 12, 2026.
 
 ## Complexity
 
