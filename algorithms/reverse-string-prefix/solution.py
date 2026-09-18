@@ -1,4 +1,3 @@
 class Solution:
-    def myPow(self, x: float, n: int) -> float:
-        return(x**n)
-        
+    def reversePrefix(self, s: str, k: int) -> str:
+        return (s[k-1::-1]+s[k::])
