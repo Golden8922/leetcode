@@ -1,12 +1,16 @@
 class Solution:
-    def maxDepth(self, s: str) -> int:
-        count=0
-        level=0
-        for i in s:
-        
-            if i=='(':
-               level=level+1
-               count=max(level,count)
-            elif i==')':
-                level=level-1  
-        return count       
+    def maxDepthAfterSplit(self, seq):
+        answer = []
+        depth = 0
+
+        for ch in seq:
+
+            if ch == '(':
+                depth += 1
+                answer.append(depth % 2)
+
+            else:
+                answer.append(depth % 2)
+                depth -= 1
+
+        return answer
