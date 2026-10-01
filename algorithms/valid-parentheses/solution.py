@@ -1,16 +1,36 @@
 class Solution:
-    def maxDepthAfterSplit(self, seq):
-        answer = []
-        depth = 0
+    def isValid(self, s: str) -> bool:
+        
+        bracket = {
+            "(": ")",
+            "{": "}",
+            "[": "]"
+        }
 
-        for ch in seq:
+        st = []
 
-            if ch == '(':
-                depth += 1
-                answer.append(depth % 2)
+        for i in s:
 
+            # Opening bracket
+            if i in bracket:
+                st.append(i)
+
+            # Closing bracket
             else:
-                answer.append(depth % 2)
-                depth -= 1
+                # No opening bracket available
+                if len(st) == 0:
+                    return False
 
-        return answer
+                # Closing bracket doesn't match top opening bracket
+                elif i != bracket[st[-1]]:
+                    return False
+
+                # Correct pair
+                else:
+                    st.pop()
+
+        # Stack should be empty
+        if len(st) == 0:
+            return True
+        else:
+            return False
